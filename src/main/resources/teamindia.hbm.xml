@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 5.3//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+<hibernate-mapping>
+    <class name="com.java.hibernate.inheritence_strategies.TeamIndia" table="team_india" discriminator-value="staff">
+        <id name="slno" column="sl_no">
+            <generator class="increment"></generator>
+        </id>
+
+        <discriminator column="category" type="string"></discriminator>
+
+        <property name="firstname" column="first_name"></property>
+        <property name="lastname" column="last_name"></property>
+
+        <subclass name="com.java.hibernate.inheritence_strategies.Batsman" discriminator-value="bat">
+            <property name="battinghand" column="batting_hand"></property>
+            <property name="bestscore" column="best_score"></property>
+        </subclass>
+
+        <subclass name="com.java.hibernate.inheritence_strategies.Bowler" discriminator-value="ball">
+            <property name="bowlinghand" column="bowing_hand"></property>
+            <property name="bestfigure" column="best_figure"></property>
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>
